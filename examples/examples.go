@@ -11,6 +11,8 @@ import (
 	"github.com/user/stringutil"
 
 	"strings"
+
+	"github.com/sabaelhilo/golearning/methods"
 )
 
 var (
@@ -29,7 +31,7 @@ const (
 	Small = Big >> 99
 )
 
-type Vertex struct {
+type Vertex1 struct {
 	X int
 	Y int
 }
@@ -103,7 +105,7 @@ func Pic(dx, dy int) [][]uint8 {
 	return picture
 }
 
-func (v Vertex) Abs() float64 {
+func (v Vertex1) Abs() float64 {
 	return math.Sqrt(float64(v.X) * float64(v.X) + float64(v.Y) * float64(v.Y))
 }
 
@@ -221,7 +223,7 @@ func main() {
 	fmt.Println(*p) // 73
 	fmt.Println(k)  // stays 21
 
-	vert := Vertex{1, 2}
+	vert := Vertex1{1, 2}
 	fmt.Println(vert.X)
 	fmt.Println(vert.Y)
 
@@ -254,8 +256,8 @@ func main() {
 
 	board[0][0] = "X"
 
-	m1 := make(map[string]Vertex)
-	m1["bell labs"] = Vertex{10, 12}
+	m1 := make(map[string]Vertex1)
+	m1["bell labs"] = Vertex1{10, 12}
 
 	fmt.Println(m1["Bell Labs"])
 
@@ -264,5 +266,19 @@ func main() {
 	}
 
 	hypot(2, 2)
+
+	v4 := methods.Vertex{10.0, 11.2}
+	v4.Scale(10)
+
+	fmt.Printf("abs %g\n", v4.Abs())
+
+	v5 := &methods.Vertex{1, 3}
+
+	var face methods.Face
+	face = v5
+
+	fmt.Println(face.Abs())
+
+	v5.EmptyInterfaceExample()
 
 }
