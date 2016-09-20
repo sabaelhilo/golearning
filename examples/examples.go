@@ -281,4 +281,12 @@ func main() {
 
 	v5.EmptyInterfaceExample()
 
+	hosts := map[string]methods.IPAddr{
+		"loopback":  {127, 0, 0, 1},
+		"googleDNS": {8, 8, 8, 8},
+	}
+
+	fmt.Println(hosts)
+
+
 }
